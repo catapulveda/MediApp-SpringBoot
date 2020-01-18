@@ -27,12 +27,13 @@ public class RestAuthServiceImpl {
 
         String metodoRoles[] = metodoRol.split(",");
 
+        //OBTIENE INFORMACION DEL TOKEN EN EL BACKEND
         Authentication autho = SecurityContextHolder.getContext().getAuthentication();
         if(!(autho instanceof AnonymousAuthenticationToken)) {//SI ES DIFERENTE DE UNA INSTANCIA ANONIMA
             System.out.println(autho.getName());
 
             for (GrantedAuthority auth : autho.getAuthorities()) {
-                String rolUser = auth.getAuthority();
+                String rolUser = auth.getAuthority();//OBTIENE EL TIPO DE USUARIO
                 System.out.println(rolUser);
 
                 for (String rolMet : metodoRoles) {
